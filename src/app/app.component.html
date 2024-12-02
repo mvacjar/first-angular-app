@@ -1,21 +1,19 @@
-<app-header />
+<app-header></app-header>
 <main>
   <ul id="users">
-    <li>
-      <app-user [user]="users[0]" select="onSelectUser($event) " />
-    </li>
-    <li>
-      <app-user [user]="users[1]" select="onSelectUser($event) " />
-      />
-    </li>
-    <li>
-      <app-user [user]="users[2]" select="onSelectUser($event) " />
-      />
-    </li>
-    <li>
-      <app-user [user]="users[3]" select="onSelectUser($event) " />
+    <li *ngFor="let user of users; track: trackByUserId">
+      <app-user [user]="user" (select)="onSelectUser($event)"></app-user>
     </li>
   </ul>
 
-  <app-tasks [name]="selectedUser.name" />
+  <ng-container *ngIf="selectedUser; else fallback">
+    <app-tasks
+      [userId]="selectedUser.id"
+      [name]="selectedUser.name"
+    ></app-tasks>
+  </ng-container>
+
+  <ng-template #fallback>
+    <p id="fallback">Select a user to see their tasks</p>
+  </ng-template>
 </main>

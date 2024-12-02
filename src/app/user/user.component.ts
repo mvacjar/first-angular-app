@@ -1,17 +1,22 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
+interface User {
+  id: string;
+  avatar: string;
+  name: string;
+}
+
 @Component({
   selector: 'app-user',
   standalone: true,
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
+  template: ` <div (select)="selectUser()">
+    {{ user.name }}
+  </div>`,
 })
 export class UserComponent {
-  @Input({ required: true }) user!: {
-    id: string;
-    avatar: string;
-    name: string;
-  };
+  @Input({ required: true }) user!: User;
   @Output() select = new EventEmitter();
 
   get imagePath() {
