@@ -16,7 +16,7 @@ export class NewTaskComponent {
     @Output() createTask = new EventEmitter<NewTaskData>();
     enteredTitle = '';
     enteredSummary = '';
-    enteredDate = '';;
+    enteredDate = '';
     private tasksService = inject(TasksService);
 
     

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from "./new-task/new-task.component";
@@ -16,11 +16,7 @@ export class TasksComponent {
   @Input({required: true}) name!: string;
   @Input({required: true}) userId!: string;
   isCreatingTask = false;
-
-  constructor(private tasksService: TasksService) {
-  
-  }
-  
+private tasksService = inject(TasksService);
 
   get selectedUserTasks() {
   return  this.tasksService.getUserTasks(this.userId);
@@ -29,8 +25,6 @@ export class TasksComponent {
   trackByTaskId( task: any): string {
     return task.id;
   }
-
-  onCompleteTask(id: string) {}
 
   onAddTask() {
     this.isCreatingTask = true;
