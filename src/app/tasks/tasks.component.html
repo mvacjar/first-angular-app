@@ -2,16 +2,18 @@
   <header>
     <h2>{{ name }}'s Tasks</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)='onAddTask()'>Add Task</button>
+    
     </menu>
   </header>
 
   <ul>
     <li *ngFor="let task of selectedUserTasks; track: trackByTaskId">
-      <app-task></app-task>
-    </li>
-    <li>
-
+      <app-task [task]='task' (complete)='onCompleteTask($event)'></app-task>
     </li>
   </ul>
 </section>
+
+
+<app-new-task [userId]="userId" (closeTask)="onCloseTask()" *ngIf="isCreatingTask"></app-new-task>
+

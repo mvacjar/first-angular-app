@@ -2,7 +2,7 @@
 <main>
   <ul id="users">
     <li *ngFor="let user of users; track: trackByUserId">
-      <app-user [user]="user" (select)="onSelectUser($event)"></app-user>
+      <app-user [user]="user" (select)="onSelectUser($event)" [selected]='user.id === selectedUserId'></app-user>
     </li>
   </ul>
 

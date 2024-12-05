@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './user/dummy-users';
-import { DUMMY_TASKS } from './tasks/task/dummy-tasks';
+// import { DUMMY_TASKS } from './tasks/task/dummy-tasks';
 import { TasksComponent } from './tasks/tasks.component';
 
 interface User {
@@ -12,13 +12,13 @@ interface User {
   name: string;
 }
 
-interface Tasks {
-  id: string;
-  userId: string;
-  title: string;
-  summary: string;
-  dueDate: string;
-}
+// interface Tasks {
+//   id: string;
+//   userId: string;
+//   title: string;
+//   summary: string;
+//   dueDate: string;
+// }
 
 @Component({
   selector: 'app-root',
@@ -34,7 +34,7 @@ interface Tasks {
 })
 export class AppComponent {
   users = DUMMY_USERS;
-  tasks: Tasks[] = DUMMY_TASKS;
+  // tasks: Tasks[] = DUMMY_TASKS;
   selectedUserId?: string;
 
   get selectedUser() {
